@@ -14,6 +14,16 @@ namespace shipper
         private const double MIN_DIMENSION = 0,
             DEFAULT_DIMENSION = 1;
 
+        public GroundPackage(int origin, int destination, double length, double width, double height, double weight)
+        {
+            OriginZip = origin;
+            DestinationZip = destination;
+            Length = length;
+            Width = width;
+            Height = height;
+            Weight = weight;
+        }
+
         public int ZoneDistance
         {
             get
@@ -134,7 +144,7 @@ namespace shipper
             return (zip >= ZIP_MIN && zip <= ZIP_MAX);
         }
 
-        private double CalcCost()
+        public double CalcCost()
         {
             const double DIMENSION_COST = .25,
                 DISTANCE_COST = .45;
@@ -148,14 +158,13 @@ namespace shipper
 
         public override string ToString()
         {
-            return "Origin ZIP: {OriginZip:F5}{Environment.NewLine}" +
-                "Destination ZIP: {DestinationZip:F5}{Environment.NewLine}" +
-                "Zone Distance: {ZoneDistance}{Environment.NewLine}" +
-                "Length: {Length}{Environment.NewLine}" +
-                "Width: {Width}{Environment.NewLine}" +
-                "Height: {Height}{Environment.NewLine}" +
-                "Weight: {Weight}{Environment.NewLine}" +
-                "Cost: {CalcCost()}";
+            return $"Origin ZIP: {OriginZip:D5}{Environment.NewLine}" +
+                $"Destination ZIP: {DestinationZip:D5}{Environment.NewLine}" +
+                $"Zone Distance: {ZoneDistance}{Environment.NewLine}" +
+                $"Length: {Length}{Environment.NewLine}" +
+                $"Width: {Width}{Environment.NewLine}" +
+                $"Height: {Height}{Environment.NewLine}" +
+                $"Weight: {Weight}";
         }
     }
 }
