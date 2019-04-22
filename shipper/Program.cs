@@ -1,8 +1,12 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿/*
+ * Grading ID: M5477
+ * Program: 4
+ * Due Date: April 23 2019
+ * Course Section: 01
+ * Description: Estimates shipping costs based on dimensions, weight, and distance.
+ */
+
+using System;
 
 namespace shipper
 {
@@ -21,6 +25,7 @@ namespace shipper
 
             DisplayPackages(packages);
 
+            // Changing one value each to make sure each set works
             packages[0].OriginZip = 45202;
             packages[1].DestinationZip = 00606;
             packages[2].Length = 4.4;
@@ -30,6 +35,11 @@ namespace shipper
 
             DisplayPackages(packages); 
         }
+
+        /*
+         * Preconditions: GroundPackage array
+         * Postconditions: None
+         */
 
         public static void DisplayPackages(GroundPackage[] packages)
         {
