@@ -1,18 +1,32 @@
-﻿using System;
+﻿/*
+ * Grading ID: M5477
+ * Program: 4
+ * Due Date: April 23 2019
+ * Course Section: 01
+ * Description: Creates a GroundPackage class to estimate shipping costs.
+ */
+
+using System;
 namespace shipper
 {
     class GroundPackage
     {
-        private int _origin,
-            _destination;
+        private int _origin, // Origin ZIP code
+            _destination;    // Destination ZIP code
 
-        private double _length,
-            _width,
-            _height,
-            _weight;
+        private double _length, // Package length
+            _width,             // Package width
+            _height,            // Package height
+            _weight;            // Package weight
 
-        private const double MIN_DIMENSION = 0,
-            DEFAULT_DIMENSION = 1;
+        private const double MIN_DIMENSION = 0, // Minimum dimension possible
+            DEFAULT_DIMENSION = 1;              // Default dimension when an invalid value is provided
+
+        /*
+         * Preconditions: Origin ZIP code, destination ZIP code,
+         * package length, package width, package height, package weight
+         * Postconditions: None
+         */
 
         public GroundPackage(int origin, int destination, double length, double width, double height, double weight)
         {
@@ -136,6 +150,11 @@ namespace shipper
             }
         }
 
+        /* 
+         * Preconditions: ZIP code
+         * Postconditions: true/false
+         */
+
         private bool IsValidZIP(int zip)
         {
             int ZIP_MIN = 0,
@@ -143,6 +162,11 @@ namespace shipper
 
             return (zip >= ZIP_MIN && zip <= ZIP_MAX);
         }
+
+        /*
+         * Preconditions: None
+         * Postconditons: Double with cost of shipping
+         */
 
         public double CalcCost()
         {
@@ -155,6 +179,11 @@ namespace shipper
 
             return cost;
         }
+
+        /*
+         * Preconditions: None
+         * Postconditions: String presenting all variables in the class
+         */
 
         public override string ToString()
         {
