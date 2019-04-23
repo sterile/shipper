@@ -42,15 +42,15 @@ namespace shipper
         {
             get
             {
-                const int divider = 10000;
-                int larger,
-                    smaller,
-                    distance;
+                const int DIVIDER = 10000; // Cheat to get us a whole number
+                int larger,   // The larger number
+                    smaller,  // The smaller number
+                    distance; // The distance (based on ZIP) between destinations
 
                 larger = Math.Max(OriginZip, DestinationZip);
                 smaller = Math.Min(OriginZip, DestinationZip);
 
-                distance = (larger / divider) - (smaller / divider);
+                distance = (larger / DIVIDER) - (smaller / DIVIDER);
 
                 return distance;
             }
@@ -64,7 +64,7 @@ namespace shipper
             }
             set
             {
-                const int DEFAULT_ZIP = 40202;
+                const int DEFAULT_ZIP = 40202; // A default ZIP code
 
                 if (IsValidZIP(value))
                     _origin = value;
@@ -81,7 +81,7 @@ namespace shipper
             }
             set
             {
-                const int DEFAULT_ZIP = 90210;
+                const int DEFAULT_ZIP = 90210; // A default ZIP code
 
                 if (IsValidZIP(value))
                     _destination = value;
@@ -157,8 +157,8 @@ namespace shipper
 
         private bool IsValidZIP(int zip)
         {
-            int ZIP_MIN = 0,
-            ZIP_MAX = 99999;
+            int ZIP_MIN = 0, // Lowest ZIP possible
+            ZIP_MAX = 99999; // Highest ZIP possible
 
             return (zip >= ZIP_MIN && zip <= ZIP_MAX);
         }
@@ -170,9 +170,9 @@ namespace shipper
 
         public double CalcCost()
         {
-            const double DIMENSION_COST = .25,
-                DISTANCE_COST = .45;
-            const int MIN_DISTANCE = 1;
+            const double DIMENSION_COST = .25, // Cost per inch
+                DISTANCE_COST = .45;           // Cost factor for distance
+            const int MIN_DISTANCE = 1;        // Shortest distance possible
 
             double cost;
             cost = (DIMENSION_COST * (Length + Width + Height)) + (DISTANCE_COST * (ZoneDistance + MIN_DISTANCE) * Weight);
@@ -182,7 +182,7 @@ namespace shipper
 
         /*
          * Preconditions: None
-         * Postconditions: String presenting all variables in the class
+         * Postconditions: String presenting  all variables in the class
          */
 
         public override string ToString()
